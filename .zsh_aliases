@@ -1,0 +1,19 @@
+echo "read .zsh_aliases"
+
+#nvimのエイリアス
+alias nv='nvim'
+
+# haskell 環境
+alias ghci='stack ghci'
+
+# LearnLinuxTV
+alias i='brew install '
+
+# pushd,popdを使いやすく
+
+# pet実行を簡単に
+alias pe='pet exec'
+alias pl='pet list'
+
+# treeを便利に
+alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'

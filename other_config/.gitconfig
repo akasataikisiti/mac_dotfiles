@@ -1,0 +1,42 @@
+[include]
+  # ユーザ情報
+  path = .gitconfig.user
+
+[color]
+	ui = true
+[core]
+	editor = nvim
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	ci = commit
+  sw = switch
+[alias]
+  dt = difftool
+  dc = difftool --cached
+  dp = difftool HEAD~
+
+[init]
+  defaultBranch = main
+
+; git difftoolでnvimが使用されるようにする
+[difftool]
+  prompt = false
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+
+
+
+; 以下旧設定うまくいかなかった(git diff でneovimを使用する設定)
+; [diff]
+; 	tool = 'nvim -d '
+; [difftool]
+; 	prompt = false
+[merge]
+	ff = false
+[pull]
+	rebase = merges

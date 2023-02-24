@@ -1,0 +1,38 @@
+echo "read for_others_from_zprofile"
+#
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# fzfコマンドの設定
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_OPTS='--preview "bat --color=always --style=header,grid --line-range :500 {}"'
+# fzf用の設定ファイルの読み込み
+source $HOME/mac_dotfiles/other_config/completion.zsh
+source $HOME/mac_dotfiles/other_config/key-bindings.zsh
+
+# zsh-completions用の設定
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit && compinit
+fi
+
+# zsh-autosuggestions用の設定
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-vi-mode用の設定
+source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# asdf用の設定
+. $(brew --prefix)/opt/asdf/libexec/asdf.sh
+
+# ChatGPT の設定読み込み
+source "$HOME/.openai_key.zsh"
+
+# githubリモートpush用key追加
+ssh-add -K ~/.ssh/github
+
+# tre command
+tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }

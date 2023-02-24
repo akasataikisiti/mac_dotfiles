@@ -1,0 +1,23 @@
+# main viewの左端にコミットIDを表示する
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+# 差分の前後の表示行数（diff-context)を指定 
+set diff-context = 6
+
+# g をファイル先頭に移動に変更、 view-grep を再割当て
+bind generic g      move-first-line
+bind generic E      view-grep
+
+# G でファイル末尾に移動 (default: :toggle commit-title-graph)
+bind generic G      move-last-line
+bind main    G      move-last-line
+
+# Alt-g で :toggle commit-title-graph
+bind main    <Esc>g :toggle commit-title-graph
+
+bind generic D      !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^!
+# bind diff D !git difftool --no-prompt %(commit)~ %(file)
+# bind diff F !git difftool --no-prompt %(commit) %(file)
+bind generic F      !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^! %(file)
+
+set ignore-space = all

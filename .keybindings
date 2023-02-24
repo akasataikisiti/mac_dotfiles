@@ -1,0 +1,3 @@
+echo "read keybindings"
+
+bindkey -v "\e." insert-last-word

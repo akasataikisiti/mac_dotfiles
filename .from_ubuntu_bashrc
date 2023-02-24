@@ -1,0 +1,15 @@
+#! /bin/zsh
+
+echo "read from_ubuntu_bashrc"
+
+export LSCOLORS=Gxfxcxdxbxegedabagacad
+alias ls="ls -G"
+alias ll="ls -alG"
+
+# historyの重複削除
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_NO_STORE
+setopt HIST_VERIFY
+
+EDITOR="nvim"

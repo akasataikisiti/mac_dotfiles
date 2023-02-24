@@ -1,0 +1,63 @@
+#! /bin/bash
+echo "read aliasrc"
+
+# スクリプトフォルダをfzfで検索しエディタで開く
+se(){
+  du -a ~/.scripts/* | \
+  awk '{
+    if ($2 !~ /(stashdir|testdir|tags)/){
+      print $2
+    }
+  }' | \
+  fzf | \
+  xargs -r $EDITOR ;
+}
+
+# スクリプトフォルダをfzfで検索し実行
+es(){
+  du -a ~/.scripts/* | \
+  awk '{
+    if ($2 !~ /(stashdir|testdir|tags)/){
+      print $2
+    }
+  }' | \
+  fzf | \
+  xargs -rI {} bash -ci "{}";
+}
+
+# カレントディレクトリ配下をfzf検索しエディタで開く
+nf(){
+  fzf | \
+  xargs -r -I % $EDITOR % ;
+}
+
+# Manページをvimで開く
+nam(){  eval "nv -c \"Man $1 | only\"" ; }
+# チートシートを検索
+ccs(){
+  if [ $# -eq 1 ]; then
+    curl "https://cheat.sh/$1" ;
+  elif [ $# -eq 2 ]; then
+    curl "https://cheat.sh/$1/$2" ;
+  fi
+}
+# fzfを使って上の階層に移動
+cdu(){
+  curent=$(pwd)
+  dirnames=(${curent//// })
+  dist='/'
+  distary=('/')
+  cd $( (for dirname in "${dirnames[@]}";do
+  dist="${dist}${dirname}"
+  echo "${dist}"
+  dist="${dist}/"
+  done) | fzf )
+}
+
+wtr(){
+  if [ $# -eq 0 ]; then
+    curl wttr.in/Katsushika
+  else
+    curl wttr.in/$1
+  fi
+}
