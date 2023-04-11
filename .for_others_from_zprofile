@@ -32,7 +32,6 @@ source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source "$HOME/.openai_key.zsh"
 
 # githubリモートpush用key追加
-ssh-add -K ~/.ssh/github
-
+ssh-add --apple-use-keychain ~/.ssh/github
 # tre command
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }

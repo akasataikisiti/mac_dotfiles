@@ -22,9 +22,6 @@ if [ -f "$DIR/.keybindings" ]; then
 	source "$DIR/.keybindings"
 fi
 
-
-# プロンプトの設定
-
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 autoload -Uz colors
 colors
@@ -38,3 +35,4 @@ function __precmd_virtual_env() {
     PROMPT="$p_penv$p_base"
 }
 add-zsh-hook precmd __precmd_virtual_env
+
