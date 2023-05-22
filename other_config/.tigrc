@@ -18,6 +18,7 @@ bind main    <Esc>g :toggle commit-title-graph
 bind generic D      !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^!
 # bind diff D !git difftool --no-prompt %(commit)~ %(file)
 # bind diff F !git difftool --no-prompt %(commit) %(file)
-bind generic F      !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^! %(file)
+# bind generic F      !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^! %(file)
+bind generic F      !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^ -- %(file)
 
 set ignore-space = all

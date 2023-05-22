@@ -41,17 +41,23 @@ ccs(){
     curl "https://cheat.sh/$1/$2" ;
   fi
 }
-# fzfを使って上の階層に移動
-cdu(){
-  curent=$(pwd)
-  dirnames=(${curent//// })
-  dist='/'
-  distary=('/')
-  cd $( (for dirname in "${dirnames[@]}";do
-  dist="${dist}${dirname}"
-  echo "${dist}"
-  dist="${dist}/"
-  done) | fzf )
+cv() {
+  local current_path=$(pwd)
+  local root_path="/"
+  local paths=()
+
+  # ルートディレクトリから現在地までのパスを段階的に取得
+  while [[ "$current_path" != "$root_path" ]]; do
+    paths+=("$current_path")
+    current_path=$(dirname "$current_path")
+  done
+
+  # パスを逆順にして fzf に渡し、選択されたパスに移動
+  local selected_path=$(printf '%s\n' "${paths[@]}" | fzf)
+
+  if [[ -n "$selected_path" ]]; then
+    cd "$selected_path"
+  fi
 }
 
 wtr(){
