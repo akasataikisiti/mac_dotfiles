@@ -35,3 +35,28 @@ source "$HOME/.openai_key.zsh"
 ssh-add --apple-use-keychain ~/.ssh/github
 # tre command
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+
+
+
+# tmux Plugin Managerインストール
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  "tmp install start"
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  echo "tmp already exists"
+fi
+
+# gke-gcloud-auth-pluginインストール(GoogleKubernetesEngine認証プラグイン)
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+
+# nvimの別インスタンスを使うための設定
+  # nvb
+NVIM_BEGINNER=~/.config/nvim-beginner
+export NVIM_BEGINNER
+alias nvb='XDG_DATA_HOME=$NVIM_BEGINNER/share XDG_CONFIG_HOME=$NVIM_BEGINNER nvim' 
+
+  # nvp
+NVIM_PRIME=~/.config/nvim-prime
+export NVIM_PRIME
+alias nvp='XDG_DATA_HOME=$NVIM_PRIME/share XDG_CONFIG_HOME=$NVIM_PRIME nvim' 

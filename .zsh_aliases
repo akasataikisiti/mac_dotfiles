@@ -16,4 +16,20 @@ alias pe='pet exec'
 alias pl='pet list'
 
 # treeを便利に
+# alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'
 alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'
+# exa
+if [[ $(command -v exa) ]]; then
+  echo "exa is installed"
+  alias tree='exa -T --git-ignore'
+fi
+
+# gitコマンド
+alias gib='git blame "$(git ls-files | fzf)"'
+
+#kubectl
+alias k='kubectl'
+
+#lazydocker
+alias ld='lazydocker'
+

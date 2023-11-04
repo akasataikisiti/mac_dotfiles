@@ -8,3 +8,5 @@ if [[ "$(ps -o comm= $PPID)" == *"nvim"* ]]; then
 else
   echo "not from nvim (maybe login shell)"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
