@@ -33,3 +33,6 @@ alias k='kubectl'
 #lazydocker
 alias ld='lazydocker'
 
+#cd directory
+alias cdd='cd ..'
+alias cddd='cd ../..'
