@@ -32,7 +32,7 @@ nf(){
 }
 
 # Manページをvimで開く
-nam(){  eval "vim -c \"Man $1 | only\"" ; }
+nam(){  eval "nvb -c \"Man $1 | only\"" ; }
 # チートシートを検索
 ccs(){
   if [ $# -eq 1 ]; then
