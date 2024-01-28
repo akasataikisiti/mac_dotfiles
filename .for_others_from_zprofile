@@ -56,12 +56,12 @@ NVIM_BEGINNER=~/.config/nvim-beginner
 export NVIM_BEGINNER
 alias nvb='XDG_DATA_HOME=$NVIM_BEGINNER/share XDG_CONFIG_HOME=$NVIM_BEGINNER nvim' 
 
-  # nvp
-NVIM_PRIME=~/.config/nvim-prime
-export NVIM_PRIME
-alias nvp='XDG_DATA_HOME=$NVIM_PRIME/share XDG_CONFIG_HOME=$NVIM_PRIME nvim' 
-
   # lazynvim
 NVIM_LAZY=nvim-lazy
 export NVIM_LAZY
 alias nz='NVIM_APPNAME=$NVIM_LAZY nvim' 
+
+  # nvchad
+NVIM_CHAD=nvim-chad
+export NVIM_CHAD
+alias vc='NVIM_APPNAME=$NVIM_CHAD nvim' 
